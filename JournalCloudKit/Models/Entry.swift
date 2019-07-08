@@ -15,17 +15,6 @@ class Entry {
     let timestamp: Date
     let recordID: CKRecord.ID
     
-    var cloudKitRecord: CKRecord {
-        let record = CKRecord(recordType: EntryConstants.typeKey)
-        
-        record.setValue(title, forKey: EntryConstants.titleKey)
-        record.setValue(body, forKey: EntryConstants.bodyKey)
-        record.setValue(timestamp, forKey: EntryConstants.timestampKey)
-        record.setValue(recordID, forKey: EntryConstants.recordIDKey)
-        
-        return record
-    }
-    
     init(title: String, body: String, timestamp: Date = Date(), recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString)) {
         self.title = title
         self.body = body
@@ -33,17 +22,13 @@ class Entry {
         self.recordID = recordID
     }
     
-    init?(record: CKRecord) {
+    convenience init?(record: CKRecord) {
         guard let title = record[EntryConstants.titleKey] as? String,
         let body = record[EntryConstants.bodyKey] as? String,
-        let timestamp = record[EntryConstants.timestampKey] as? Date,
-        let recordID = record[EntryConstants.recordIDKey] as? CKRecord.ID
-            else {return nil}
+        let timestamp = record[EntryConstants.timestampKey] as? Date
+        else {return nil}
         
-        self.title = title
-        self.body = body
-        self.timestamp = timestamp
-        self.recordID = recordID
+        self.init(title: title, body: body, timestamp: timestamp, recordID: record.recordID)
     }
 }
 
@@ -56,11 +41,11 @@ struct EntryConstants {
     
 }
 
-extension Entry: Equatable {
-    static func ==(lhs: Entry, rhs: Entry) -> Bool {
-        return lhs.title == rhs.title &&
-        lhs.body == rhs.body &&
-        lhs.timestamp == rhs.timestamp &&
-        lhs.recordID == rhs.recordID
+extension CKRecord {
+    convenience init(entry: Entry) {
+        self.init(recordType: EntryConstants.typeKey, recordID: entry.recordID)
+        self.setValue(entry.title, forKey: EntryConstants.titleKey)
+        self.setValue(entry.body, forKey: EntryConstants.bodyKey)
+        self.setValue(entry.timestamp, forKey: EntryConstants.timestampKey)
     }
 }
