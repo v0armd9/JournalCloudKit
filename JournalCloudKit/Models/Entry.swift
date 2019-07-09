@@ -10,9 +10,9 @@ import Foundation
 import CloudKit
 
 class Entry {
-    let title: String
-    let body: String
-    let timestamp: Date
+    var title: String
+    var body: String
+    var timestamp: Date
     let recordID: CKRecord.ID
     
     init(title: String, body: String, timestamp: Date = Date(), recordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString)) {
@@ -34,8 +34,8 @@ class Entry {
 
 struct EntryConstants {
     static let typeKey = "Entry"
-    fileprivate static let titleKey = "Title"
-    fileprivate static let bodyKey = "Body"
+    static let titleKey = "Title"
+    static let bodyKey = "Body"
     fileprivate static let timestampKey = "Timestamp"
     fileprivate static let recordIDKey = "RecordID"
     
@@ -47,5 +47,14 @@ extension CKRecord {
         self.setValue(entry.title, forKey: EntryConstants.titleKey)
         self.setValue(entry.body, forKey: EntryConstants.bodyKey)
         self.setValue(entry.timestamp, forKey: EntryConstants.timestampKey)
+    }
+}
+
+extension Entry: Equatable {
+    static func ==(lhs: Entry, rhs: Entry) -> Bool {
+        return lhs.title == rhs.title &&
+        lhs.body == rhs.body &&
+        lhs.timestamp == rhs.timestamp &&
+        lhs.recordID == rhs.recordID
     }
 }

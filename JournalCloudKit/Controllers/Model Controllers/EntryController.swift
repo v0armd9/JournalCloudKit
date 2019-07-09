@@ -16,7 +16,7 @@ class EntryController {
     var entries: [Entry] = []
     
     
-    func save(entry: Entry, completion: @escaping (Bool) -> (Void)) {
+    func save(entry: Entry, completion: @escaping (Bool) -> ()) {
         let record = CKRecord(entry: entry)
         CKContainer.default().privateCloudDatabase.save(record) { (record, error) in
             if let error = error {
@@ -60,4 +60,35 @@ class EntryController {
             completion(true)
         }
     }
+    
+    func updateEntryWith(entry: Entry, title: String, body: String, completion: @escaping(Bool) -> Void) {
+        entry.title = title
+        entry.body = body
+        
+        CKContainer.default().privateCloudDatabase.fetch(withRecordID: entry.recordID) { (record, error) in
+            if let error = error {
+                print("Error in \(#function): \(error.localizedDescription) /n---/n \(error)")
+                completion(false)
+                return
+            }
+            
+            guard let record = record else {
+                completion(false)
+                return
+            }
+            
+            let operation = CKModifyRecordsOperation(recordsToSave: [record], recordIDsToDelete: nil)
+            operation.savePolicy = .changedKeys
+            operation.queuePriority = .high
+            operation.qualityOfService = .userInitiated
+            operation.modifyRecordsCompletionBlock = { (records, recordID, error) in
+                completion(true)
+            }
+            CKContainer.default().privateCloudDatabase.add(operation)
+        }
+        
+        
+        
+    }
 }
+

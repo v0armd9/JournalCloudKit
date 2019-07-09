@@ -10,6 +10,9 @@
 		2C257D0822D3D959002CFE7A /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C257D0722D3D959002CFE7A /* Entry.swift */; };
 		2C257D0C22D3DC72002CFE7A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C257D0B22D3DC72002CFE7A /* CloudKit.framework */; };
 		2C257D0E22D3DFAE002CFE7A /* EntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C257D0D22D3DFAE002CFE7A /* EntryController.swift */; };
+		2C257D1022D3EEF9002CFE7A /* EntriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C257D0F22D3EEF9002CFE7A /* EntriesTableViewController.swift */; };
+		2C257D1222D3EFD9002CFE7A /* EntryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C257D1122D3EFD9002CFE7A /* EntryDetailViewController.swift */; };
+		2C257D1422D3FC02002CFE7A /* DateFormatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C257D1322D3FC02002CFE7A /* DateFormatExtension.swift */; };
 		2C9DAF0B22D3D85000C8BD92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9DAF0A22D3D85000C8BD92 /* AppDelegate.swift */; };
 		2C9DAF1022D3D85000C8BD92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C9DAF0E22D3D85000C8BD92 /* Main.storyboard */; };
 		2C9DAF1222D3D85200C8BD92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C9DAF1122D3D85200C8BD92 /* Assets.xcassets */; };
@@ -21,6 +24,9 @@
 		2C257D0922D3DC70002CFE7A /* JournalCloudKit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JournalCloudKit.entitlements; sourceTree = "<group>"; };
 		2C257D0B22D3DC72002CFE7A /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		2C257D0D22D3DFAE002CFE7A /* EntryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryController.swift; sourceTree = "<group>"; };
+		2C257D0F22D3EEF9002CFE7A /* EntriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesTableViewController.swift; sourceTree = "<group>"; };
+		2C257D1122D3EFD9002CFE7A /* EntryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailViewController.swift; sourceTree = "<group>"; };
+		2C257D1322D3FC02002CFE7A /* DateFormatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatExtension.swift; sourceTree = "<group>"; };
 		2C9DAF0722D3D85000C8BD92 /* JournalCloudKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JournalCloudKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C9DAF0A22D3D85000C8BD92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C9DAF0F22D3D85000C8BD92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -118,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				2C257D0D22D3DFAE002CFE7A /* EntryController.swift */,
+				2C257D1322D3FC02002CFE7A /* DateFormatExtension.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -125,6 +132,8 @@
 		2C9DAF2122D3D8F100C8BD92 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2C257D0F22D3EEF9002CFE7A /* EntriesTableViewController.swift */,
+				2C257D1122D3EFD9002CFE7A /* EntryDetailViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -208,8 +217,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C257D1022D3EEF9002CFE7A /* EntriesTableViewController.swift in Sources */,
 				2C257D0E22D3DFAE002CFE7A /* EntryController.swift in Sources */,
+				2C257D1422D3FC02002CFE7A /* DateFormatExtension.swift in Sources */,
 				2C257D0822D3D959002CFE7A /* Entry.swift in Sources */,
+				2C257D1222D3EFD9002CFE7A /* EntryDetailViewController.swift in Sources */,
 				2C9DAF0B22D3D85000C8BD92 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
